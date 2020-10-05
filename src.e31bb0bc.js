@@ -64053,6 +64053,7 @@ __exportStar(require("./common-index"), exports);
 
 },{"./key_stores/browser-index":"../node_modules/near-api-js/lib/key_stores/browser-index.js","./common-index":"../node_modules/near-api-js/lib/common-index.js"}],"config.js":[function(require,module,exports) {
 var CONTRACT_NAME = "menta.testnet" || 'token-access';
+var DEFAULT_ENV = 'development';
 
 function getConfig(env) {
   switch (env) {
@@ -64115,7 +64116,14 @@ function getConfig(env) {
       };
 
     default:
-      throw Error("Unconfigured environment '".concat(env, "'. Can be configured in src/config.js."));
+      return {
+        networkId: 'testnet',
+        nodeUrl: 'https://rpc.testnet.near.org',
+        contractName: CONTRACT_NAME,
+        walletUrl: 'https://wallet.testnet.near.org',
+        helperUrl: 'https://helper.testnet.near.org',
+        explorerUrl: 'https://explorer.testnet.near.org'
+      };
   }
 }
 
